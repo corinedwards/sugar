@@ -4,14 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title><%= [@page_title, Sugar.config.forum_name].compact.join(' - ') %></title>
 
-  <%# Stylesheet %>
-  <%= stylesheet_link_tag "application" %>
-  <% if current_user? && current_user.stylesheet_url? %>
-    <%= stylesheet_link_tag current_user.stylesheet_url %>
-  <% else %>
-    <%= stylesheet_link_tag @theme.stylesheet_path %>
-  <% end %>
-
+  <%= stylesheet_link_tag "b3s/screen" %>
   <%= icon_tags %>
   <%= csrf_meta_tag %>
   <%= javascript_include_tag "swfobject" %>

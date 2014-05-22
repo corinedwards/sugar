@@ -31,6 +31,3 @@ config/deploy/*.rb
 
 # Ignore NewRelic configuration
 config/newrelic.yml
-
-# Ignore zipped themes
-public/themes/*.zip

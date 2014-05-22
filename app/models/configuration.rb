@@ -74,16 +74,8 @@ class Configuration
     end
   end
 
-  module ThemeSettings
-    extend ActiveSupport::Concern
-    included do
-      setting :default_theme,        :string, 'default'
-    end
-  end
-
   include CustomizationSettings
   include IntegrationSettings
-  include ThemeSettings
 
   def get(key)
     raise InvalidConfigurationKey, ":#{key} is not a valid configuration option" unless has_setting?(key)

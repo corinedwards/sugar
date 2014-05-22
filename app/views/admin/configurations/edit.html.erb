@@ -13,9 +13,6 @@
     <a href="#general"><%= t('configuration.general_settings') %></a>
   </li>
   <li class="tab">
-    <a href="#themes"><%= t('configuration.themes') %></a>
-  </li>
-  <li class="tab">
     <a href="#integration"><%= t('configuration.services_and_integration') %></a>
   </li>
   <li class="tab">
@@ -60,15 +57,6 @@
         <%= f.radio_button :signups_allowed, true %> <%= t('configuration.users_can_sign_up') %><br>
         <%= f.radio_button :signups_allowed, false %> <%= t('configuration.users_must_be_invited') %>
       </p>
-    </fieldset>
-  </div>
-
-  <div id="themes">
-    <fieldset>
-      <h2>
-        <%= t('configuration.themes') %>
-      </h2>
-      <%= f.labelled_select :default_theme, Theme.all.map{|t| [t.full_name, t.id]} %>
     </fieldset>
   </div>
 

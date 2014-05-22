@@ -138,12 +138,6 @@ describe User do
     specify { expect(user.admin_labels).to eq([]) }
   end
 
-  describe "#theme" do
-    before { Sugar.config.default_theme = "default" }
-    specify { expect(user.theme).to eq("default") }
-    specify { expect(create(:user, theme: "mytheme").theme).to eq("mytheme") }
-  end
-
   describe "#mark_active!" do
     subject { user.last_active }
     before { user.mark_active! }

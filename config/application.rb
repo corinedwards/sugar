@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 require File.expand_path('../boot', __FILE__)
-require File.expand_path('../../app/themes/theme', __FILE__)
 
 require 'rails/all'
 
@@ -60,8 +59,7 @@ module Sugar
     config.assets.precompile << "emoji/**/*.png"
 
     # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-    config.assets.precompile += %w( swfobject.js )
-    config.assets.precompile += Theme.precompile_assets
+    config.assets.precompile += %w{b3s/screen.css default/screen.css swfobject.js}
   end
 end
 

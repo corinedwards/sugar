@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   before_action :load_configuration
   before_action :set_time_zone
   before_action :set_section
-  before_action :set_theme
 
   helper_method :viewed_tracker
 
@@ -79,22 +78,6 @@ class ApplicationController < ActionController::Base
       @section = :conversations
     else
       @section = :discussions
-    end
-  end
-
-  def get_theme
-    if current_user?
-      Theme.find(current_user.theme)
-    else
-      Theme.find(Sugar.config.default_theme)
-    end
-  end
-
-  def set_theme
-    respond_to do |format|
-      format.any do
-        @theme = get_theme
-      end
     end
   end
 end

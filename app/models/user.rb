@@ -77,10 +77,6 @@ class User < ActiveRecord::Base
     labels
   end
 
-  def theme
-    self.theme? ? self.attributes['theme'] : Sugar.config.default_theme
-  end
-
   def mark_active!
     if !self.last_active || self.last_active < 10.minutes.ago
       self.update_columns(last_active: Time.now)

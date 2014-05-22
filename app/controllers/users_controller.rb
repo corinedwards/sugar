@@ -49,7 +49,7 @@ class UsersController < ApplicationController
         :facebook_uid, :flickr, :gamertag, :gtalk, :instagram,
         :last_fm, :latitude, :location, :longitude,
         :msn, :notify_on_message, :realname,
-        :stylesheet_url, :theme, :time_zone, :twitter, :website,
+        :time_zone, :twitter, :website,
         :password, :confirm_password, :banned_until, :preferred_format, :sony,
         avatar_attributes: [:file]
       ]
