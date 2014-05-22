@@ -33,7 +33,7 @@ class DiscussionsController < ApplicationController
     @exchanges = search.results
 
     respond_to do |format|
-      format.any(:html, :mobile) do
+      format.html do
         @search_path = search_path
         respond_with_exchanges(@exchanges)
       end

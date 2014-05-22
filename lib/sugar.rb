@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-require_relative "sugar/responder"
-
 module Sugar
 
   class << self

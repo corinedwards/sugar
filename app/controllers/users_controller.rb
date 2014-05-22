@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   before_action :detect_edit_page, only: [:edit, :update]
   before_action :verify_editable,  only: [:edit, :update, :update_openid]
 
-  respond_to :html, :mobile, :xml, :json
+  respond_to :html, :xml, :json
 
   private
 
@@ -47,8 +47,8 @@ class UsersController < ApplicationController
       allowed = [
         :aim, :birthday, :description, :email,
         :facebook_uid, :flickr, :gamertag, :gtalk, :instagram,
-        :last_fm, :latitude, :location, :longitude, :mobile_stylesheet_url,
-        :mobile_theme, :msn, :notify_on_message, :realname,
+        :last_fm, :latitude, :location, :longitude,
+        :msn, :notify_on_message, :realname,
         :stylesheet_url, :theme, :time_zone, :twitter, :website,
         :password, :confirm_password, :banned_until, :preferred_format, :sony,
         avatar_attributes: [:file]
@@ -115,15 +115,15 @@ class UsersController < ApplicationController
           if @user == current_user
             current_user.reload
           end
-          format.any(:html, :mobile) do
+          format.html do
             unless initiate_openid_on_update
               flash[:notice] = "Your changes were saved!"
               redirect_to edit_user_page_url(id: @user.username, page: @page)
             end
           end
         else
-          flash.now[:notice] = "Couldn't save your changes, did you fill in all required fields?"
-          format.any(:html, :mobile) { render action: :edit }
+          flash.now[:notice] = "Couldn't save your category, did you fill in all required fields?"
+          format.html { render action: :edit }
         end
       end
     end

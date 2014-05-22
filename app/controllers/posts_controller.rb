@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   after_action :mark_conversation_viewed, only: [:since]
   #after_action :notify_mentioned,         only: [:create]
 
-  respond_to :html, :mobile, :json
+  respond_to :html, :json
 
   def count
     @count = @exchange.posts_count

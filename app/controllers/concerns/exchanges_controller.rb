@@ -5,7 +5,7 @@ module ExchangesController
 
   included do
     protect_from_forgery except: [:mark_as_read]
-    respond_to :html, :mobile, :json
+    respond_to :html, :json
   end
 
   def search_posts
@@ -15,7 +15,7 @@ module ExchangesController
   end
 
   def show
-    context = (request.format == :mobile) ? 0 : 3
+    context = 3
     @page = params[:page] || 1
     @posts = @exchange.posts.page(@page, context: context).for_view
 

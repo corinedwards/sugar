@@ -69,7 +69,6 @@
         <%= t('configuration.themes') %>
       </h2>
       <%= f.labelled_select :default_theme, Theme.all.map{|t| [t.full_name, t.id]} %>
-      <%= f.labelled_select :default_mobile_theme, Theme.mobile.map{|t| [t.full_name, t.id]} %>
     </fieldset>
   </div>
 

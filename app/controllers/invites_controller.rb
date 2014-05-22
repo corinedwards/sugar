@@ -6,7 +6,7 @@ class InvitesController < ApplicationController
   requires_user           except: [:accept]
   requires_user_admin     only:   [:all]
 
-  respond_to :html, :mobile, :xml, :json
+  respond_to :html, :xml, :json
 
   before_action :find_invite,              only: [:show, :edit, :update, :destroy]
   before_action :verify_available_invites, only: [:new, :create]
@@ -97,7 +97,7 @@ class InvitesController < ApplicationController
   def verify_available_invites
     unless current_user? && current_user.available_invites?
       respond_to do |format|
-        format.any(:html, :mobile) do
+        format.html do
           flash[:notice] = "You don't have any invites!"
           redirect_to online_users_url and return
         end

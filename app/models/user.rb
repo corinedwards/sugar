@@ -87,10 +87,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def mobile_theme
-    self.mobile_theme? ? self.attributes['mobile_theme'] : Sugar.config.default_mobile_theme
-  end
-
   def gamertag_avatar_url
     if self.gamertag?
       "http://avatar.xboxlive.com/avatar/#{URI.escape(self.gamertag)}/avatarpic-l.png"

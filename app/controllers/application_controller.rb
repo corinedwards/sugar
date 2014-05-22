@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 
   include Authentication
 
-  self.responder = Sugar::Responder
-
   layout 'application'
 
   protect_from_forgery
@@ -15,7 +13,6 @@ class ApplicationController < ActionController::Base
   before_action :disable_xss_protection
   before_action :load_configuration
   before_action :set_time_zone
-  before_action :detect_mobile
   before_action :set_section
   before_action :set_theme
 
@@ -38,7 +35,6 @@ class ApplicationController < ActionController::Base
     }
     respond_to do |format|
       format.html   {options[:template] ||= "errors/#{error}"}
-      format.mobile {options[:template] ||= "errors/#{error}"}
       format.xml    {options[:text] ||= error_messages[error]}
       format.json   {options[:text] ||= error_messages[error]}
     end
@@ -64,20 +60,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def mobile_user_agent?
-    request.host =~ /^(iphone|m|mobile)\./ ||
-      (request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari|Android|IEMobile)/])
-  end
-  helper_method :mobile_user_agent?
-
-  def detect_mobile
-    if mobile_user_agent?
-      session[:mobile_format] ||= 'mobile'
-      session[:mobile_format] = params[:mobile_format] if params[:mobile_format]
-      request.format = :mobile if session[:mobile_format] == 'mobile' && request.format == "text/html"
-    end
-  end
-
   def require_s3
     unless Sugar.aws_s3?
       flash[:notice] = "Amazon Web Services not configured!"
@@ -100,14 +82,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_mobile_theme
-    if current_user?
-      Theme.find(current_user.mobile_theme)
-    else
-      Theme.find(Sugar.config.default_mobile_theme)
-    end
-  end
-
   def get_theme
     if current_user?
       Theme.find(current_user.theme)
@@ -118,13 +92,9 @@ class ApplicationController < ActionController::Base
 
   def set_theme
     respond_to do |format|
-      format.mobile do
-        @theme = get_mobile_theme
-      end
       format.any do
         @theme = get_theme
       end
     end
   end
-
 end

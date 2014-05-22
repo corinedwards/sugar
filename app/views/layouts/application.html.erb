@@ -109,11 +109,6 @@
     <%# Main content %>
     <div id="content">
       <%= yield %>
-      <% if mobile_user_agent? %>
-        <div class="mobile_link">
-          <p><%= link_to "mobile version", mobile_format: 'mobile' %></p>
-        </div>
-      <% end %>
     </div>
   </div>
 

@@ -1,9 +1,0 @@
-<%
-  add_body_class "discussions hidden_discussions"
-  @page_title = "Hidden Discussions"
-%>
-
-<%= render partial: "exchanges/table", locals: {
-  exchanges:    @exchanges,
-  no_exchanges: "You haven't hidden any discussions!"
-} %>

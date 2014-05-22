@@ -4,11 +4,7 @@ class UsersController < ApplicationController
 
     def index
       @users = User.active.by_username
-      respond_with(@users) do |format|
-        format.mobile {
-          @online_users = @users.select{|u| u.online?}
-        }
-      end
+      respond_with(@users)
     end
 
     def banned

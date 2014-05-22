@@ -164,20 +164,6 @@ describe User do
     end
   end
 
-  describe "#mobile_theme" do
-    subject { user.mobile_theme }
-    before { Sugar.config.default_mobile_theme = "default_mobile" }
-
-    context "when not set" do
-      it { is_expected.to eq("default_mobile") }
-    end
-
-    context "when set" do
-      let(:user) { build(:user, mobile_theme: "mytheme_mobile") }
-      it { is_expected.to eq("mytheme_mobile") }
-    end
-  end
-
   describe "#gamertag_avatar_url" do
     subject { user.gamertag_avatar_url }
 

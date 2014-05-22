@@ -11,11 +11,7 @@ class Theme
     end
 
     def precompile_assets
-      all.flat_map { |theme| [theme.stylesheet_path, theme.mobile_stylesheet_path] }.compact
-    end
-
-    def mobile
-      all.select{|t| t.mobile?}
+      all.flat_map { |theme| theme.stylesheet_path }.compact
     end
 
     def find(id)
@@ -50,10 +46,6 @@ class Theme
 
   def dir
     Theme.base_dir.join(id)
-  end
-
-  def mobile?
-    mobile_stylesheet?
   end
 
   def stylesheet
