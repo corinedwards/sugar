@@ -17,7 +17,9 @@ gem 'redis-rails', '~> 4.0.0'
 
 gem 'json'
 gem 'sass-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'uglifier'
+gem 'jquery-rails'
 
 gem 'gemoji', git: "https://github.com/github/gemoji.git"
 gem 'b3s_emoticons', git: "https://github.com/elektronaut/b3s_emoticons.git"
@@ -56,6 +58,7 @@ gem 'fastimage'
 gem 'ruby-filemagic', require: 'filemagic'
 gem 'aws-sdk'
 gem 'redcarpet', '~> 3.0'
+gem 'rouge'
 
 group :development do
   gem 'spring'

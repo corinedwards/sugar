@@ -1,0 +1,11 @@
+<% if @exchanges.any? %>
+  <section class="discussion-list">
+    <% @exchanges.each do |exchange| %>
+      <article class="discussion">
+        <h3>
+          <%= link_to exchange.title, last_viewed_page_path(exchange) %>
+        </h3>
+      </article>
+    <% end %>
+  </section>
+<% end %>
